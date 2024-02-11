@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
             Text(
               "Sandhya's Grocery Shop", // Updated title here
               style: TextStyle(
-                fontSize: 20, // Adjust the font size as needed
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.grey[700],
               ),
@@ -50,16 +50,10 @@ class _HomePageState extends State<HomePage> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 24.0),
-            child: Container(
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Icon(
-                Icons.person,
-                color: Colors.grey,
-              ),
+            child: Image.asset(
+              'lib/images/sandhya.jpg',
+              height: 48, // Adjust the height as needed
+              width: 48,  // Adjust the width as needed
             ),
           ),
         ],
@@ -116,7 +110,6 @@ class _HomePageState extends State<HomePage> {
             child: Text(
               "Selling items are here",
               style: GoogleFonts.notoSerif(
-                //fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),
