@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 class CartModel extends ChangeNotifier {
   // list of items on sale
   final List _shopItems = const [
-    // [ itemName, itemPrice, imagePath, color ]
-    ["orange", "100 ", "lib/images/orange.png", Colors.blue],
-    ["Banana", "130 ", "lib/images/banana.png", Colors.blue],
-    ["Chicken", "390", "lib/images/chicken.png", Colors.blue],
-    ["Wheat", "200 ", "lib/images/rice.png", Colors.blue],
-  ];
+  // [ itemName, itemPrice, imagePath, color ]
+  ["Brushes", "500 ", "lib/images/brushes.png", Colors.blue],
+  ["Compact powder", "600", "lib/images/compact powder.png", Colors.blue],
+  ["Foundation", "800", "lib/images/foundation.png", Colors.blue],
+  ["Palate2", "200 ", "lib/images/palate.jpg", Colors.blue],
+  ["Mylogo", "150", "lib/images/mylogo.png", Colors.green],
+  ["Bb", "50", "lib/images/brushes.png", Colors.brown],
+];
+
 
   // list of cart items
   List _cartItems = [];

@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Sandhya's Grocery Shop", // Updated title here
+              "Sandhya's Cosmetic Face Collection", // Updated title here
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -51,9 +51,9 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.only(right: 24.0),
             child: Image.asset(
-              'lib/images/sandhya.jpg',
-              height: 48, // Adjust the height as needed
-              width: 48,  // Adjust the width as needed
+              'lib/images/sandhya.png',
+              height: 100, // Adjust the height as needed
+              width: 100, // Adjust the width as needed
             ),
           ),
         ],
@@ -70,60 +70,50 @@ class _HomePageState extends State<HomePage> {
         ),
         child: const Icon(Icons.shopping_bag),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 48),
-
-          // good morning bro
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0),
-            child: Text('Hurry Up,'),
-          ),
-
-          const SizedBox(height: 4),
-
-          // Let's order fresh items for you
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Text(
-              "You can order from here ",
-              style: GoogleFonts.notoSerif(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 48),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
+              child: Text('Discover Your Glow,'),
+            ),
+            const SizedBox(height: 4),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Text(
+                "Explore our exclusive face products", // Updated text here
+                style: GoogleFonts.notoSerif(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),
-
-          const SizedBox(height: 24),
-
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0),
-            child: Divider(),
-          ),
-
-          const SizedBox(height: 24),
-
-          // categories -> horizontal listview
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Text(
-              "Selling items are here",
-              style: GoogleFonts.notoSerif(
-                fontSize: 18,
+            const SizedBox(height: 24),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
+              child: Divider(),
+            ),
+            const SizedBox(height: 24),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Text(
+                "Glowing items are here...order now", // Updated text here
+                style: GoogleFonts.notoSerif(
+                  fontSize: 18,
+                ),
               ),
             ),
-          ),
-
-          // recent orders -> show last 3
-          Expanded(
-            child: Consumer<CartModel>(
+            Consumer<CartModel>(
               builder: (context, value, child) {
                 return GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   padding: const EdgeInsets.all(12),
-                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: value.shopItems.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: 1 / 1.2,
                   ),
@@ -141,8 +131,8 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

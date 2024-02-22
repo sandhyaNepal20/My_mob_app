@@ -12,9 +12,9 @@ class IntroScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Sandhya's Grocery Store",
+          "Sandhya's Cosmetic Face Collection", // Updated title here
           style: GoogleFonts.notoSerif(
-            fontSize: 24,
+            fontSize: 22,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -29,14 +29,14 @@ class IntroScreen extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('lib/images/grocery.png'),
+                image: AssetImage('lib/images/palate.jpg'), // Updated image
                 fit: BoxFit.cover,
               ),
             ),
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10), // Adjust the blur intensity
               child: Container(
-                color: Colors.black.withOpacity(0.3), // Adjust the overlay color and opacity
+                color: const Color.fromARGB(255, 247, 242, 242).withOpacity(0.1), // Adjust the overlay color and opacity
               ),
             ),
           ),
@@ -51,14 +51,14 @@ class IntroScreen extends StatelessWidget {
                     top: 40, // Adjusted top padding
                     bottom: 20,
                   ),
-                  child: Image.asset('lib/images/grocery.png'),
+                  child: Image.asset('lib/images/mylogo.png'), // Updated logo
                 ),
 
-                // we deliver groceries at your doorstep
+                // we deliver cosmetics at your doorstep // Updated text
                 Padding(
                   padding: const EdgeInsets.all(28.0),
                   child: Text(
-                    'We deliver groceries at your doorstep',
+                    'We deliver cosmetics at your doorstep', // Updated text
                     textAlign: TextAlign.center,
                     style: GoogleFonts.notoSerif(
                       fontSize: 36,
@@ -67,9 +67,9 @@ class IntroScreen extends StatelessWidget {
                   ),
                 ),
 
-                // grocery gives you fresh vegetables and fruits
+                // cosmetic gives you fresh beauty products every day // Updated text
                 Text(
-                  'Fresh items every day',
+                  'Fresh beauty products every day', // Updated text
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
