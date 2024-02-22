@@ -58,17 +58,35 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return CartPage();
-            },
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            backgroundColor: Color.fromARGB(255, 3, 65, 86),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return CartPage();
+                },
+              ),
+            ),
+            child: const Icon(Icons.shopping_bag),
           ),
-        ),
-        child: const Icon(Icons.shopping_bag),
+          SizedBox(height: 8), // Adjust the spacing between the button and text as needed
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Pay Now',
+                style: TextStyle(
+                  color: Colors.black, // Customize the text color as needed
+                  fontSize: 16, // Customize the font size as needed
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -112,8 +130,7 @@ class _HomePageState extends State<HomePage> {
                   physics: NeverScrollableScrollPhysics(),
                   padding: const EdgeInsets.all(12),
                   itemCount: value.shopItems.length,
-                  gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: 1 / 1.2,
                   ),
