@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../components/grocery_item_tile.dart';
+import '../components/cosmetic_item_tile.dart';
 import '../model/cart_model.dart';
 import 'cart_page.dart';
 
@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                     childAspectRatio: 1 / 1.2,
                   ),
                   itemBuilder: (context, index) {
-                    return GroceryItemTile(
+                    return CosmeticItemTile(
                       itemName: value.shopItems[index][0],
                       itemPrice: value.shopItems[index][1],
                       imagePath: value.shopItems[index][2],
