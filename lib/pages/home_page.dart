@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Pay Now',
+                'Add to cart',
                 style: TextStyle(
                   color: Colors.black, // Customize the text color as needed
                   fontSize: 16, // Customize the font size as needed

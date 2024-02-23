@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "153142882293",
+    "project_id": "mycosmeticcollection-2c5e8",
+    "storage_bucket": "mycosmeticcollection-2c5e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:153142882293:android:b436e04f1943238ff37abc",
+        "android_client_info": {
+          "package_name": "com.example.my_grocery_store"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjCwS1sVCjESX7QCPo3hrqCFmsPcmy9pg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
