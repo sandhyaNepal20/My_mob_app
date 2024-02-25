@@ -88,67 +88,75 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 50),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
-              child: Text('Discover Your Glow,'),
-            ),
-            const SizedBox(height: 4),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Text(
-                "Explore our exclusive face products",
-                style: GoogleFonts.notoSerif(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/images/bgimage.png'), // Replace with the actual path to your background image
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 50),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24.0),
+                child: Text('Discover Your Glow,'),
               ),
-            ),
-            const SizedBox(height: 24),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
-              child: Divider(),
-            ),
-            const SizedBox(height: 24),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Text(
-                "You can order from here !",
-                style: GoogleFonts.notoSerif(
-                  fontSize: 18,
-                ),
-              ),
-            ),
-            Consumer<CartModel>(
-              builder: (context, value, child) {
-                return GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(12),
-                  itemCount: value.shopItems.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1,
-                    childAspectRatio: 3 / 2, // Adjust the aspect ratio as needed
+              const SizedBox(height: 4),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Text(
+                  "Explore our exclusive face products",
+                  style: GoogleFonts.notoSerif(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
                   ),
-                  itemBuilder: (context, index) {
-                    return CosmeticItemTile(
-                      itemName: value.shopItems[index][0],
-                      itemPrice: value.shopItems[index][1],
-                      imagePath: value.shopItems[index][2],
-                      color: value.shopItems[index][3],
-                      onPressed: () =>
-                          Provider.of<CartModel>(context, listen: false)
-                              .addItemToCart(index),
-                    );
-                  },
-                );
-              },
-            ),
-          ],
+                ),
+              ),
+              const SizedBox(height: 24),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24.0),
+                child: Divider(),
+              ),
+              const SizedBox(height: 24),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Text(
+                  "You can order from here !",
+                  style: GoogleFonts.notoSerif(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              Consumer<CartModel>(
+                builder: (context, value, child) {
+                  return GridView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.all(12),
+                    itemCount: value.shopItems.length,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 1,
+                      childAspectRatio: 3 / 2, // Adjust the aspect ratio as needed
+                    ),
+                    itemBuilder: (context, index) {
+                      return CosmeticItemTile(
+                        itemName: value.shopItems[index][0],
+                        itemPrice: value.shopItems[index][1],
+                        imagePath: value.shopItems[index][2],
+                        color: value.shopItems[index][3],
+                        onPressed: () =>
+                            Provider.of<CartModel>(context, listen: false)
+                                .addItemToCart(index),
+                      );
+                    },
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

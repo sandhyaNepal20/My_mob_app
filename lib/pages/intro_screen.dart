@@ -17,7 +17,7 @@ class IntroScreen extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('lib/images/palate.jpg'), // Updated image
+                image: AssetImage('lib/images/bg1.png'), // Updated image
                 fit: BoxFit.cover,
               ),
             ),
@@ -50,7 +50,7 @@ class IntroScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(
                           left: 100.0,
                           right: 100.0,
-                          top: 40, // Adjusted top padding
+                          top: 80, // Adjusted top padding
                           bottom: 20,
                         ),
                         child: Image.asset('lib/images/mylogo.png'), // Updated logo

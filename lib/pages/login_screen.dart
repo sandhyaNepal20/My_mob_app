@@ -13,7 +13,7 @@ class LoginScreen extends StatelessWidget {
             // AppBar with title
             AppBar(
               title: Text(
-                'Login', // Your login title here
+                "Sandhya's cosmetic collection \n  Login ", // Your login title here
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,

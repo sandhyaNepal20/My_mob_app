@@ -22,7 +22,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             // AppBar with title
             AppBar(
               title: Text(
-                'Register', // Your register title here
+                "Sandhya's cosmetic collection \n Register", // Your register title here
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
