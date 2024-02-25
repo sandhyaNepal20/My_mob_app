@@ -10,18 +10,6 @@ class IntroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Sandhya's Cosmetic Face Collection", // Updated title here
-          style: GoogleFonts.notoSerif(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.transparent, // Make the app bar transparent
-        elevation: 0, // Remove the shadow
-      ),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -43,71 +31,88 @@ class IntroScreen extends StatelessWidget {
           SafeArea(
             child: Column(
               children: [
-                // big logo
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 100.0,
-                    right: 100.0,
-                    top: 40, // Adjusted top padding
-                    bottom: 20,
+                AppBar(
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
-                  child: Image.asset('lib/images/mylogo.png'), // Updated logo
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  centerTitle: true,
                 ),
-
-                // we deliver cosmetics at your doorstep // Updated text
-                Padding(
-                  padding: const EdgeInsets.all(28.0),
-                  child: Text(
-                    'We deliver cosmetics at your doorstep', // Updated text
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.notoSerif(
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-
-                // cosmetic gives you fresh beauty products every day // Updated text
-                Text(
-                  'Fresh beauty products every day', // Updated text
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: const Color.fromARGB(255, 7, 7, 7),
-                  ),
-                ),
-
-                const SizedBox(height: 24),
-
-                const Spacer(),
-
-                // get started button
-                GestureDetector(
-                  onTap: () => Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return HomePage();
-                      },
-                    ),
-                  ),
-                  child: Container(
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: Color.fromARGB(255, 112, 183, 241),
-                    ),
-                    child: const Text(
-                      "Get Started",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
+                Expanded(
+                  child: Column(
+                    children: [
+                      // big logo
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 100.0,
+                          right: 100.0,
+                          top: 40, // Adjusted top padding
+                          bottom: 20,
+                        ),
+                        child: Image.asset('lib/images/mylogo.png'), // Updated logo
                       ),
-                    ),
+
+                      // we deliver cosmetics at your doorstep // Updated text
+                      Padding(
+                        padding: const EdgeInsets.all(28.0),
+                        child: Text(
+                          'We deliver cosmetics at your doorstep', // Updated text
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.notoSerif(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+
+                      // cosmetic gives you fresh beauty products every day // Updated text
+                      Text(
+                        'Fresh beauty products every day', // Updated text
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: const Color.fromARGB(255, 7, 7, 7),
+                        ),
+                      ),
+
+                      const SizedBox(height: 24),
+
+                      const Spacer(),
+
+                      // get started button
+                      GestureDetector(
+                        onTap: () => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return HomePage();
+                            },
+                          ),
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.all(24),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Color.fromARGB(255, 112, 183, 241),
+                          ),
+                          child: const Text(
+                            "Get Started",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      const Spacer(),
+                    ],
                   ),
                 ),
-
-                const Spacer(),
               ],
             ),
           ),

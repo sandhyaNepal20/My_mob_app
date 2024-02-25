@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
+import 'package:my_cosmetic_collection/pages/login_screen.dart'; // Import your login screen
 import '../model/cart_model.dart';
 
 class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+  const CartPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,6 @@ class CartPage extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Let's order fresh items for you
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.0),
                 child: Text(
@@ -34,7 +33,6 @@ class CartPage extends StatelessWidget {
                 ),
               ),
 
-              // list view of cart
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
@@ -75,8 +73,6 @@ class CartPage extends StatelessWidget {
                 ),
               ),
 
-              // total amount + pay now
-
               Padding(
                 padding: const EdgeInsets.all(36.0),
                 child: Container(
@@ -97,7 +93,6 @@ class CartPage extends StatelessWidget {
                           ),
 
                           const SizedBox(height: 8),
-                          // total price
                           Text(
                             '\Rs ${value.calculateTotal()}',
                             style: const TextStyle(
@@ -109,25 +104,32 @@ class CartPage extends StatelessWidget {
                         ],
                       ),
 
-                      // pay now
                       Container(
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.green.shade200),
                           borderRadius: BorderRadius.circular(28),
                         ),
                         padding: const EdgeInsets.all(12),
-                        child: Row(
-                          children: const [
-                            Text(
-                              'Pay Now',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 16,
-                              color: Colors.white,
-                            ),
-                          ],
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => LoginScreen()),
+                            );
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                'Pay Now',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                size: 16,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

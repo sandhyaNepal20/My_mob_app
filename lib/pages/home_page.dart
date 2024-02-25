@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Sandhya's Cosmetic Face Collection", // Updated title here
+              "Sandhya's Cosmetic Face Collection",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -52,8 +52,8 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(right: 24.0),
             child: Image.asset(
               'lib/images/sandhya.png',
-              height: 100, // Adjust the height as needed
-              width: 100, // Adjust the width as needed
+              height: 100,
+              width: 100,
             ),
           ),
         ],
@@ -73,15 +73,15 @@ class _HomePageState extends State<HomePage> {
             ),
             child: const Icon(Icons.shopping_bag),
           ),
-          SizedBox(height: 8), // Adjust the spacing between the button and text as needed
+          SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 'Add to cart',
                 style: TextStyle(
-                  color: Colors.black, // Customize the text color as needed
-                  fontSize: 16, // Customize the font size as needed
+                  color: Colors.black,
+                  fontSize: 16,
                 ),
               ),
             ],
@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 48),
+            const SizedBox(height: 50),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0),
               child: Text('Discover Your Glow,'),
@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Text(
-                "Explore our exclusive face products", // Updated text here
+                "Explore our exclusive face products",
                 style: GoogleFonts.notoSerif(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Text(
-                "Glowing items are here...order now", // Updated text here
+                "You can order from here !",
                 style: GoogleFonts.notoSerif(
                   fontSize: 18,
                 ),
@@ -131,8 +131,8 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(12),
                   itemCount: value.shopItems.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 1 / 1.2,
+                    crossAxisCount: 1,
+                    childAspectRatio: 3 / 2, // Adjust the aspect ratio as needed
                   ),
                   itemBuilder: (context, index) {
                     return CosmeticItemTile(
