@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_cosmetic_collection/pages/login_screen.dart'; // Import your login screen
+import 'package:my_cosmetic_collection/pages/login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -13,20 +13,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController gmailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  bool _passwordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            // AppBar with title
             AppBar(
               title: Text(
-                "Sandhya's cosmetic collection \n Register", // Your register title here
+                "Sandhya's cosmetic collection \n Register",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
-                  color: Colors.black, // Choose the color you want for the title
+                  color: Colors.black,
                 ),
               ),
               leading: IconButton(
@@ -43,6 +46,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Form(
+                  key: _formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -56,10 +60,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: Color.fromARGB(255, 12, 12, 12),
                           ),
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your username.';
+                          }
+                          return null;
+                        },
                       ),
                       const SizedBox(height: 20),
                       TextFormField(
                         controller: gmailController,
+                        keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           suffixIcon: Icon(Icons.check, color: Colors.grey),
                           labelText: 'Gmail',
@@ -68,44 +79,58 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: Color.fromARGB(255, 12, 12, 12),
                           ),
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your email.';
+                          } else if (!value.contains('@')) {
+                            return 'Invalid email address.';
+                          }
+                          return null;
+                        },
                       ),
                       const SizedBox(height: 20),
                       TextFormField(
                         controller: passwordController,
-                        obscureText: true,
+                        obscureText: !_passwordVisible,
                         decoration: InputDecoration(
-                          suffixIcon: Icon(Icons.visibility_off, color: Colors.grey),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _passwordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.grey,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _passwordVisible = !_passwordVisible;
+                              });
+                            },
+                          ),
                           labelText: 'Password',
                           labelStyle: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 11, 11, 11),
                           ),
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your password.';
+                          }
+                          return null;
+                        },
                       ),
                       const SizedBox(height: 30),
-                      GestureDetector(
-                        onTap: () {
-                          if (_validateForm()) {
-                            // Perform signup logic here
-
-                            // After successful signup, navigate to login screen
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => LoginScreen()),
-                            );
-                          } else {
-                            // Show a message indicating that all fields must be filled
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('Please fill in all fields.'),
-                                duration: Duration(seconds: 2),
-                              ),
-                            );
-                          }
+                      ElevatedButton(
+                        onPressed: () {
+                          _submitForm();
                         },
-                        child: Container(
-                          height: 55,
-                          width: double.infinity,
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        child: Ink(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                             gradient: const LinearGradient(
@@ -115,13 +140,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ],
                             ),
                           ),
-                          child: const Center(
-                            child: Text(
-                              'SIGN UP',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.white,
+                          child: Container(
+                            height: 55,
+                            width: double.infinity,
+                            child: Center(
+                              child: Text(
+                                'SIGN UP',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
@@ -142,7 +171,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => LoginScreen()),
+                                MaterialPageRoute(
+                                  builder: (context) => LoginScreen(),
+                                ),
                               );
                             },
                             child: Text(
@@ -167,9 +198,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  bool _validateForm() {
-    return usernameController.text.isNotEmpty &&
-        gmailController.text.isNotEmpty &&
-        passwordController.text.isNotEmpty;
+  void _submitForm() {
+    if (_formKey.currentState?.validate() ?? false) {
+      // Simulate successful signup (replace with your signup logic)
+      _showSuccessSnackBar();
+
+      // After successful signup, navigate to login screen
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => LoginScreen()),
+      );
+    }
+  }
+
+  void _showSuccessSnackBar() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Signup successful!'),
+        duration: Duration(seconds: 2),
+      ),
+    );
   }
 }
