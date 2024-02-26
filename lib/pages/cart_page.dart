@@ -14,7 +14,7 @@ class CartPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: IconThemeData(
-          color: Colors.pink[800],
+          color: Colors.blue[800],
         ),
       ),
       body: Consumer<CartModel>(
@@ -44,7 +44,7 @@ class CartPage extends StatelessWidget {
                         padding: const EdgeInsets.all(12.0),
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.pink[200],
+                              color: Colors.blue[200],
                               borderRadius: BorderRadius.circular(8)),
                           child: ListTile(
                             leading: Image.asset(
@@ -78,7 +78,7 @@ class CartPage extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    color: Color.fromARGB(255, 54, 43, 95),
+                    color: Color.fromARGB(255, 9, 65, 91),
                   ),
                   padding: const EdgeInsets.all(24),
                   child: Row(
